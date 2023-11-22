@@ -1,0 +1,414 @@
+openapi: 3.0.3
+info:
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  title: Swagger Student Management System - OpenAPI 3.0
+  version: 1.0.11
+servers:
+- url: https://petstore3.swagger.io/api/v3
+tags:
+- description: Operations about student
+  externalDocs:
+    description: Find out more
+    url: http://swagger.io
+  name: student
+- description: Operations about course
+  name: course
+paths:
+  /student:
+    get:
+      description: Returns list of students
+      operationId: getStudentList
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Student'
+                type: array
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Student'
+          description: successful operation
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: Student not found
+      summary: Get list of all students
+      tags:
+      - student
+      x-accepts: application/json
+      x-tags:
+      - tag: student
+    post:
+      description: Add a new student
+      operationId: addStudent
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Student'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Student'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Student'
+        description: Create a new student
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Student'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Student'
+          description: Successful operation
+        "405":
+          description: Invalid input
+      summary: Add a new student
+      tags:
+      - student
+      x-content-type: application/json
+      x-accepts: application/json
+      x-tags:
+      - tag: student
+    put:
+      description: Update an existing student by Id
+      operationId: updateStudent
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Student'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Student'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Student'
+        description: Update an existent student
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Student'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Student'
+          description: Successful operation
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: Student not found
+        "405":
+          description: Validation exception
+      summary: Update an existing student
+      tags:
+      - student
+      x-content-type: application/json
+      x-accepts: application/json
+      x-tags:
+      - tag: student
+  /student/{studentId}:
+    delete:
+      description: delete a student
+      operationId: deleteStudent
+      parameters:
+      - description: Student id to delete
+        explode: false
+        in: path
+        name: studentId
+        required: true
+        schema:
+          format: int64
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Student'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Student'
+          description: successful operation
+        "400":
+          description: Invalid student value
+      summary: Deletes a student
+      tags:
+      - student
+      x-accepts: application/json
+      x-tags:
+      - tag: student
+    get:
+      description: Returns a single student
+      operationId: getStudent
+      parameters:
+      - description: ID of student to return
+        explode: false
+        in: path
+        name: studentId
+        required: true
+        schema:
+          format: int64
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Student'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Student'
+          description: successful operation
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: Student not found
+      summary: Find student by ID
+      tags:
+      - student
+      x-accepts: application/json
+      x-tags:
+      - tag: student
+  /course:
+    get:
+      description: Returns list of courses
+      operationId: getCourseList
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Course'
+                type: array
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Course'
+          description: successful operation
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: Course not found
+      summary: Get list of all courses
+      tags:
+      - course
+      x-accepts: application/json
+      x-tags:
+      - tag: course
+    post:
+      description: Add a new course
+      operationId: addCourse
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Course'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Course'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Course'
+        description: Create a new course
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Course'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Course'
+          description: Successful operation
+        "405":
+          description: Invalid input
+      summary: Add a new course
+      tags:
+      - course
+      x-content-type: application/json
+      x-accepts: application/json
+      x-tags:
+      - tag: course
+    put:
+      description: Update an existing course by Id
+      operationId: updateCourse
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Course'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Course'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Course'
+        description: Update an existent course
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Course'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Course'
+          description: Successful operation
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: Course not found
+        "405":
+          description: Validation exception
+      summary: Update an existing course
+      tags:
+      - course
+      x-content-type: application/json
+      x-accepts: application/json
+      x-tags:
+      - tag: course
+  /course/{courseId}:
+    delete:
+      description: delete a course
+      operationId: deleteCourse
+      parameters:
+      - description: Course id to delete
+        explode: false
+        in: path
+        name: courseId
+        required: true
+        schema:
+          format: int64
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Course'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Course'
+          description: successful operation
+        "400":
+          description: Invalid course value
+      summary: Deletes a course
+      tags:
+      - course
+      x-accepts: application/json
+      x-tags:
+      - tag: course
+    get:
+      description: Returns a single course
+      operationId: getCourse
+      parameters:
+      - description: ID of course to return
+        explode: false
+        in: path
+        name: courseId
+        required: true
+        schema:
+          format: int64
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Course'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Course'
+          description: successful operation
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: Course not found
+      summary: Find course by ID
+      tags:
+      - course
+      x-accepts: application/json
+      x-tags:
+      - tag: course
+components:
+  requestBodies:
+    Employee:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Student'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/Student'
+      description: Student object that needs to be added
+    Department:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Course'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/Course'
+      description: Course object that needs to be added
+  schemas:
+    Student:
+      example:
+        address: Pune
+        phone: "1234567890"
+        name: Ramesh
+        id: 1
+        email: ramesh@email.com
+      properties:
+        id:
+          example: 1
+          format: int64
+          type: integer
+        name:
+          example: Ramesh
+          type: string
+        address:
+          example: Pune
+          format: int64
+          type: string
+        email:
+          example: ramesh@email.com
+          type: string
+        phone:
+          example: "1234567890"
+          type: string
+      type: object
+      xml:
+        name: student
+    Course:
+      example:
+        name: name
+        id: 1
+        desc: desc
+      properties:
+        id:
+          example: 1
+          format: int64
+          type: integer
+        name:
+          type: string
+        desc:
+          type: string
+      type: object
+      xml:
+        name: course
